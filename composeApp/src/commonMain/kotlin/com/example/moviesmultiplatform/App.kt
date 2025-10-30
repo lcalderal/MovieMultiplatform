@@ -5,6 +5,7 @@ import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.moviesmultiplatform.features.movies.MoviesListRoute
 import com.example.moviesmultiplatform.navigation.AppRoutes
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -18,7 +19,7 @@ fun App() {
             startDestination = AppRoutes.MoviesList
         ) {
             composable<AppRoutes.MoviesList> {
-                // MovieListScreen()
+                MoviesListRoute()
             }
 
             composable<AppRoutes.MovieDetails> {
