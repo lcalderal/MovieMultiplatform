@@ -17,14 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.moviesmultiplatform.data.repository.MoviesRepository
 import com.example.moviesmultiplatform.features.components.MoviesSection
 import com.example.moviesmultiplatform.features.movies.MoviesListViewModel.MoviesListState
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun MoviesListRoute(
-    viewModel: MoviesListViewModel = viewModel { MoviesListViewModel(MoviesRepository()) }
+    viewModel: MoviesListViewModel = koinViewModel()
 ) {
 
     val moviesListState by viewModel.moviesListState.collectAsStateWithLifecycle()

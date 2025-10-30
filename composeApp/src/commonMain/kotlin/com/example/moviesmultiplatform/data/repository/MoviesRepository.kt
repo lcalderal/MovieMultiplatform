@@ -10,13 +10,14 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.withContext
 
 class MoviesRepository(
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val ktorClient: KtorClient
 ) {
     suspend fun getMovieSections(): List<MovieSection> {
         return withContext(ioDispatcher) {
-            val popularMoviesDeferred = async { KtorClient.getMovies("popular") }
-            val topRatedMoviesDeferred = async { KtorClient.getMovies("top_rated") }
-            val upcomingMoviesDeferred = async { KtorClient.getMovies("upcoming") }
+            val popularMoviesDeferred = async { ktorClient.getMovies("popular") }
+            val topRatedMoviesDeferred = async { ktorClient.getMovies("top_rated") }
+            val upcomingMoviesDeferred = async { ktorClient.getMovies("upcoming") }
 
             val popularMovies = popularMoviesDeferred.await()
             val topRatedMovies = topRatedMoviesDeferred.await()
