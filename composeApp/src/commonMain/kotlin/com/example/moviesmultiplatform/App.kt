@@ -1,6 +1,5 @@
 package com.example.moviesmultiplatform
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -9,6 +8,7 @@ import com.example.moviesmultiplatform.di.dataModule
 import com.example.moviesmultiplatform.di.networkModule
 import com.example.moviesmultiplatform.di.viewModelModule
 import com.example.moviesmultiplatform.features.movies.MoviesListRoute
+import com.example.moviesmultiplatform.features.theme.MoviesAppTheme
 import com.example.moviesmultiplatform.navigation.AppRoutes
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinApplication
@@ -21,7 +21,7 @@ fun App() {
             modules(networkModule, dataModule, viewModelModule)
         }
     ) {
-        MaterialTheme {
+        MoviesAppTheme {
             val navController = rememberNavController()
             NavHost(
                 navController = navController,
